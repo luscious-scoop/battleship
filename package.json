@@ -1,5 +1,5 @@
 {
-  "name": "webpack_template-",
+  "name": "battleship",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luscious-scoop/webpack_template-.git"
+    "url": "git+https://github.com/luscious-scoop/battleship.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/luscious-scoop/webpack_template-/issues"
+    "url": "https://github.com/luscious-scoop/battleship/issues"
   },
-  "homepage": "https://github.com/luscious-scoop/webpack_template-#readme",
+  "homepage": "https://github.com/luscious-scoop/battleship#battleship",
   "devDependencies": {
     "@babel/preset-env": "^7.29.7",
     "@eslint/js": "^10.0.1",
