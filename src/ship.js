@@ -1,4 +1,4 @@
-export const Ship = (l) => {
+export const Ship = (l, name) => {
   let length = l;
 
   let hitsTaken = 0;
@@ -17,11 +17,13 @@ export const Ship = (l) => {
   const getLength = () => length;
 
   const getHitsTaken = () => hitsTaken;
+  const shipName = () => name;
 
   return Object.freeze({
     hit,
     getLength,
     getHitsTaken,
     isSunk,
+    shipName,
   });
 };
