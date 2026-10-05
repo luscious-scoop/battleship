@@ -1,15 +1,9 @@
-const Ship = (l) => {
+export const Ship = (l) => {
   let length = l;
 
   let hitsTaken = 0;
   function hit() {
     hitsTaken++;
-
-    if (isSunk()) {
-      console.log('ship has sunk');
-    } else {
-      console.log('the ship took a hit');
-    }
   }
 
   function isSunk() {
@@ -28,18 +22,6 @@ const Ship = (l) => {
     hit,
     getLength,
     getHitsTaken,
+    isSunk,
   });
 };
-
-const ship = Ship(5);
-
-ship.hit();
-
-ship.hit();
-
-ship.hit();
-
-ship.hit();
-
-ship.hit();
-console.log(ship.getHitsTaken());
