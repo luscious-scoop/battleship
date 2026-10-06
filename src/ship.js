@@ -7,7 +7,7 @@ export const Ship = (l, name) => {
   }
 
   function isSunk() {
-    if (hitsTaken === length) {
+    if (hitsTaken >= length) {
       return true;
     }
 
