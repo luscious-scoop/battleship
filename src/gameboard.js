@@ -1,3 +1,5 @@
+import { Ship } from './ship.js';
+
 const Gameboard = () => {
   const board = [];
 
