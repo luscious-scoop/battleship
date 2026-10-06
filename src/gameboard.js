@@ -35,9 +35,12 @@ const Gameboard = () => {
   }
 
   const getBoard = () => board;
+
+  const getShips = () => ships;
   return Object.freeze({
     getBoard,
     placeShip,
+    getShips,
   });
 };
 
