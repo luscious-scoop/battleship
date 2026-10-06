@@ -16,11 +16,11 @@ const Gameboard = () => {
 
   createBoard();
 
-  function placeShip(ship, points) {
-    if (ships.has(ship.shipName())) {
+  function placeShip(length, name, points) {
+    if (ships.has(name)) {
       return;
     }
-
+    const ship = Ship(length, name);
     ships.set(ship.shipName(), ship);
 
     for (let i = 0; i < points.length; i++) {
@@ -46,7 +46,7 @@ const Gameboard = () => {
 
 const board = Gameboard();
 
-board.placeShip(Ship(5, 'bomber'), [
+board.placeShip(5, 'bomber', [
   [0, 0],
   [0, 1],
   [0, 2],
@@ -54,7 +54,7 @@ board.placeShip(Ship(5, 'bomber'), [
   [0, 4],
 ]);
 
-board.placeShip(Ship(4, 'carrier'), [
+board.placeShip(4, 'carrier', [
   [1, 0],
   [2, 0],
   [3, 0],
