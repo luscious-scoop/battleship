@@ -107,7 +107,7 @@ test('check if  you hit a ship at a coordinate and you again hit that coordinate
   expect(boardArray[0][0]).toBe(1);
 });
 
-test.only('check if you provide a coordinate that does not have a ship the attack misses ', () => {
+test('check if you provide a coordinate that does not have a ship the attack misses ', () => {
   board.placeShip(5, 'bomber', [
     [0, 0],
     [0, 1],
@@ -121,4 +121,54 @@ test.only('check if you provide a coordinate that does not have a ship the attac
   const boardArray = board.getBoard();
 
   expect(boardArray[2][2]).toBe(0);
+});
+
+test('check if all of the ships are not sunk', () => {
+  board.placeShip(3, 'bomber', [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+  ]);
+
+  board.placeShip(4, 'carrier', [
+    [1, 0],
+    [1, 1],
+    [1, 2],
+    [1, 3],
+  ]);
+
+  board.receiveAttack([0, 0]);
+  board.receiveAttack([0, 1]);
+
+  board.receiveAttack([1, 0]);
+  board.receiveAttack([1, 1]);
+  board.receiveAttack([1, 2]);
+
+  expect(board.areShipsSunk()).toBe(false);
+});
+
+test('check if all of the ships are  sunk', () => {
+  board.placeShip(3, 'bomber', [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+  ]);
+
+  board.placeShip(4, 'carrier', [
+    [1, 0],
+    [1, 1],
+    [1, 2],
+    [1, 3],
+  ]);
+
+  board.receiveAttack([0, 0]);
+  board.receiveAttack([0, 1]);
+  board.receiveAttack([0, 2]);
+
+  board.receiveAttack([1, 0]);
+  board.receiveAttack([1, 1]);
+  board.receiveAttack([1, 2]);
+  board.receiveAttack([1, 3]);
+
+  expect(board.areShipsSunk()).toBe(true);
 });
