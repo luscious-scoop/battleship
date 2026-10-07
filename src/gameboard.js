@@ -58,7 +58,7 @@ export const Gameboard = () => {
     }
   }
 
-  function AreShipsSunk() {
+  function areShipsSunk() {
     const shipsArray = Array.from(ships.values());
 
     for (const obj of shipsArray) {
@@ -78,6 +78,6 @@ export const Gameboard = () => {
     placeShip,
     getShips,
     receiveAttack,
-    AreShipsSunk,
+    areShipsSunk,
   });
 };
