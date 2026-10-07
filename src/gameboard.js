@@ -50,10 +50,6 @@ export const Gameboard = () => {
 
       console.log('you hit the ship');
       board[x][y] = 1;
-
-      if (ship.isSunk()) {
-        console.log('you sunk the ship');
-      }
     } else if (isEmpty) {
       console.log('you missed');
       board[x][y] = 0;
