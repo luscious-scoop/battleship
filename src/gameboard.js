@@ -1,6 +1,6 @@
 import { Ship } from './ship.js';
 
-const Gameboard = () => {
+export const Gameboard = () => {
   const board = [];
   const ships = new Map();
 
