@@ -34,6 +34,34 @@ const Gameboard = () => {
     }
   }
 
+  function receiveAttack(points) {
+    const [x, y] = points;
+
+    const isShip = typeof board[x][y] === 'string' ? true : false;
+
+    const isEmpty = board[x][y] === -1 ? true : false;
+
+    const alreadyHit = board[x][y] === 0 || board[x][y] === 1 ? true : false;
+
+    if (isShip) {
+      const ship = ships.get(board[x][y]);
+
+      ship.hit();
+
+      console.log('you hit the ship');
+      board[x][y] = 1;
+
+      if (ship.isSunk()) {
+        console.log('you sunk the ship');
+      }
+    } else if (isEmpty) {
+      console.log('you missed');
+      board[x][y] = 0;
+    } else if (alreadyHit) {
+      console.log('you already hit that coordinate');
+    }
+  }
+
   const getBoard = () => board;
 
   const getShips = () => ships;
@@ -41,6 +69,7 @@ const Gameboard = () => {
     getBoard,
     placeShip,
     getShips,
+    receiveAttack,
   });
 };
 
@@ -61,4 +90,7 @@ board.placeShip(4, 'carrier', [
   [4, 0],
 ]);
 
-console.log(board.getBoard());
+board.receiveAttack([1, 0]);
+board.receiveAttack([2, 0]);
+board.receiveAttack([3, 0]);
+board.receiveAttack([4, 0]);
