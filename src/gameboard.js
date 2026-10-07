@@ -70,23 +70,3 @@ export const Gameboard = () => {
 };
 
 const board = Gameboard();
-
-board.placeShip(5, 'bomber', [
-  [0, 0],
-  [0, 1],
-  [0, 2],
-  [0, 3],
-  [0, 4],
-]);
-
-board.placeShip(4, 'carrier', [
-  [1, 0],
-  [2, 0],
-  [3, 0],
-  [4, 0],
-]);
-
-board.receiveAttack([1, 0]);
-board.receiveAttack([2, 0]);
-board.receiveAttack([3, 0]);
-board.receiveAttack([4, 0]);
