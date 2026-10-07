@@ -58,6 +58,18 @@ export const Gameboard = () => {
     }
   }
 
+  function AreShipsSunk() {
+    const shipsArray = Array.from(ships.values());
+
+    for (const obj of shipsArray) {
+      if (obj.isSunk() === false) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   const getBoard = () => board;
 
   const getShips = () => ships;
@@ -66,7 +78,6 @@ export const Gameboard = () => {
     placeShip,
     getShips,
     receiveAttack,
+    AreShipsSunk,
   });
 };
-
-const board = Gameboard();
