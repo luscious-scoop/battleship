@@ -12,5 +12,22 @@ export const gameController = (playerOneName) => {
     opponent = activePlayer === players[0] ? players[1] : players[0];
   }
 
-  function sendShipsToBoard() {}
+  function sendShipsToPlayerBoard(ship, coordinates) {
+    let board = activePlayer.getPlayerBoard();
+
+    board.placeShip(ship.length, ship.name, coordinates);
+    console.log(board.getBoard());
+  }
+
+  function sendShipsToOpponentBoard(ship, coordinates) {
+    let board = opponent.getPlayerBoard();
+
+    board.placeShip(ship.length, ship.name, coordinates);
+    console.log(board.getBoard());
+  }
+
+  return Object.freeze({
+    sendShipsToPlayerBoard,
+    sendShipsToOpponentBoard,
+  });
 };
