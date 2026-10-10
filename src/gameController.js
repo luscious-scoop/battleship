@@ -26,6 +26,12 @@ export const gameController = (playerOneName) => {
     console.log(board.getBoard());
   }
 
+  function playRound(coordinates) {
+    opponent.getPlayerBoard().receiveAttack(coordinates);
+
+    switchPlayers();
+  }
+
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
