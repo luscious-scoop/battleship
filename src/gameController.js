@@ -28,8 +28,18 @@ export const gameController = (playerOneName) => {
 
   function playRound(coordinates) {
     opponent.getPlayerBoard().receiveAttack(coordinates);
-
+    printRound();
     switchPlayers();
+  }
+
+  function printRound() {
+    console.log(activePlayer.getPlayerName());
+
+    console.log(activePlayer.getPlayerBoard().getBoard());
+
+    console.log(opponent.getPlayerName());
+
+    console.log(opponent.getPlayerBoard().getBoard());
   }
 
   return Object.freeze({
