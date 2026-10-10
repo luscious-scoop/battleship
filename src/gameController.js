@@ -42,6 +42,18 @@ export const gameController = (playerOneName) => {
     console.log(opponent.getPlayerBoard().getBoard());
   }
 
+  function winHandler() {
+    let playerBoard = activePlayer.getPlayerBoard();
+    let opponentBoard = activePlayer.getPlayerBoard();
+
+    if (playerBoard.areShipsSunk()) {
+      return activePlayer.getPlayerName();
+    } else if (opponentBoard.areShipsSunk()) {
+      return opponent.getPlayerName();
+    }
+
+    return false;
+  }
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
