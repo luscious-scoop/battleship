@@ -28,8 +28,16 @@ export const gameController = (playerOneName) => {
 
   function playRound(coordinates) {
     opponent.getPlayerBoard().receiveAttack(coordinates);
+
+    const result = winHandler();
+
+    if (result) {
+      console.log(`${activePlayer.getPlayerName()} Won`);
+      return;
+    } else {
+      switchPlayers();
+    }
     printRound();
-    switchPlayers();
   }
 
   function printRound() {
@@ -44,12 +52,12 @@ export const gameController = (playerOneName) => {
 
   function winHandler() {
     let playerBoard = activePlayer.getPlayerBoard();
-    let opponentBoard = activePlayer.getPlayerBoard();
+    let opponentBoard = opponent.getPlayerBoard();
 
     if (playerBoard.areShipsSunk()) {
-      return activePlayer.getPlayerName();
-    } else if (opponentBoard.areShipsSunk()) {
       return opponent.getPlayerName();
+    } else if (opponentBoard.areShipsSunk()) {
+      return activePlayer.getPlayerName();
     }
 
     return false;
@@ -57,5 +65,6 @@ export const gameController = (playerOneName) => {
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
+    playRound,
   });
 };
