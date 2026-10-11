@@ -51,8 +51,6 @@ export const gameController = (playerOneName) => {
         ? createCoordinates(ship.length, board.isShipAtCoordinates)
         : coordinates;
     board.placeShip(ship.length, ship.name, coordinates);
-    console.log('human');
-    console.log(board.getBoard());
   }
 
   function sendShipsToOpponentBoard(ship, coordinates = null) {
@@ -63,8 +61,6 @@ export const gameController = (playerOneName) => {
         : coordinates;
 
     board.placeShip(ship.length, ship.name, coordinates);
-    console.log('opponent');
-    console.log(board.getBoard());
   }
 
   function playRound(coordinates) {
@@ -96,6 +92,11 @@ export const gameController = (playerOneName) => {
       sendShipsToPlayerBoard(ship);
       sendShipsToOpponentBoard(ship);
     }
+    console.log('player');
+    console.log(activePlayer.getPlayerBoard().getBoard());
+
+    console.log('opp');
+    console.log(opponent.getPlayerBoard().getBoard());
   }
 
   function winHandler() {
