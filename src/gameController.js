@@ -46,19 +46,12 @@ export const gameController = (playerOneName) => {
 
   function sendShipsToPlayerBoard(ship, coordinates = null) {
     let board = activePlayer.getPlayerBoard();
-    coordinates =
-      coordinates === null
-        ? createCoordinates(ship.length, board.isShipAtCoordinates)
-        : coordinates;
+
     board.placeShip(ship.length, ship.name, coordinates);
   }
 
   function sendShipsToOpponentBoard(ship, coordinates = null) {
     let board = opponent.getPlayerBoard();
-    coordinates =
-      coordinates === null
-        ? createCoordinates(ship.length, board.isShipAtCoordinates)
-        : coordinates;
 
     board.placeShip(ship.length, ship.name, coordinates);
   }
@@ -87,10 +80,22 @@ export const gameController = (playerOneName) => {
     console.log(opponent.getPlayerBoard().getBoard());
   }
 
-  function placeShipsRandomly() {
+  function placeShipsRandomly(playerOne = false, playerTwo = false) {
     for (let ship of ships) {
-      sendShipsToPlayerBoard(ship);
-      sendShipsToOpponentBoard(ship);
+      let firstCoordinates = createCoordinates(
+        ship.length,
+        activePlayer.getPlayerBoard().isShipAtCoordinates
+      );
+      let secondCoordinates = createCoordinates(
+        ship.length,
+        opponent.getPlayerBoard().isShipAtCoordinates
+      );
+      if (playerOne) {
+        sendShipsToPlayerBoard(ship, firstCoordinates);
+      }
+      if (playerTwo) {
+        sendShipsToOpponentBoard(ship, secondCoordinates);
+      }
     }
     console.log('player');
     console.log(activePlayer.getPlayerBoard().getBoard());
