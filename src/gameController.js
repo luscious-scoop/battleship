@@ -1,6 +1,38 @@
 import { Player } from './player.js';
 import { createCoordinates } from './helper.js';
 export const gameController = (playerOneName) => {
+  const ships = [
+    {
+      length: 5,
+      name: 'battleship',
+    },
+
+    {
+      length: 4,
+      name: 'carrier',
+    },
+
+    {
+      length: 3,
+      name: 'bomber',
+    },
+
+    {
+      length: 3,
+      name: 'submarine',
+    },
+
+    {
+      length: 2,
+      name: 'boat',
+    },
+
+    {
+      length: 2,
+      name: 'sonar',
+    },
+  ];
+
   const players = [Player(playerOneName, 'human'), Player('computer', 'AI')];
 
   let activePlayer = players[0];
@@ -59,6 +91,13 @@ export const gameController = (playerOneName) => {
     console.log(opponent.getPlayerBoard().getBoard());
   }
 
+  function placeShipsRandomly() {
+    for (let ship of ships) {
+      sendShipsToPlayerBoard(ship);
+      sendShipsToOpponentBoard(ship);
+    }
+  }
+
   function winHandler() {
     let playerBoard = activePlayer.getPlayerBoard();
     let opponentBoard = opponent.getPlayerBoard();
@@ -75,5 +114,6 @@ export const gameController = (playerOneName) => {
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
     playRound,
+    placeShipsRandomly,
   });
 };
