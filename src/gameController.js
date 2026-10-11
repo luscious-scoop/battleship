@@ -1,5 +1,5 @@
 import { Player } from './player.js';
-
+import { createCoordinates } from './helper.js';
 export const gameController = (playerOneName) => {
   const players = [Player(playerOneName, 'human'), Player('computer', 'AI')];
 
@@ -12,17 +12,26 @@ export const gameController = (playerOneName) => {
     opponent = activePlayer === players[0] ? players[1] : players[0];
   }
 
-  function sendShipsToPlayerBoard(ship, coordinates) {
+  function sendShipsToPlayerBoard(ship, coordinates = null) {
     let board = activePlayer.getPlayerBoard();
-
+    coordinates =
+      coordinates === null
+        ? createCoordinates(ship.length, board.isShipAtCoordinates)
+        : coordinates;
     board.placeShip(ship.length, ship.name, coordinates);
+    console.log('human');
     console.log(board.getBoard());
   }
 
-  function sendShipsToOpponentBoard(ship, coordinates) {
+  function sendShipsToOpponentBoard(ship, coordinates = null) {
     let board = opponent.getPlayerBoard();
+    coordinates =
+      coordinates === null
+        ? createCoordinates(ship.length, board.isShipAtCoordinates)
+        : coordinates;
 
     board.placeShip(ship.length, ship.name, coordinates);
+    console.log('opponent');
     console.log(board.getBoard());
   }
 

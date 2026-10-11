@@ -1,8 +1,10 @@
-export function createCoordinates(length) {
-  return Math.random() >= 0.5 ? generateRow(length) : generateColumn(length);
+export function createCoordinates(length, callback) {
+  return Math.random() >= 0.5
+    ? generateRow(length, callback)
+    : generateColumn(length, callback);
 }
 
-function generateRow(length) {
+function generateRow(length, callback) {
   let coordinates = [];
 
   let x = Math.floor(Math.random() * 10);
@@ -14,7 +16,7 @@ function generateRow(length) {
 
     y++;
 
-    if (y >= 10) {
+    if (y >= 10 || callback(x, y)) {
       coordinates = [];
       x = Math.floor(Math.random() * 10);
       y = x;
@@ -23,7 +25,7 @@ function generateRow(length) {
 
   return coordinates;
 }
-function generateColumn(length) {
+function generateColumn(length, callback) {
   let coordinates = [];
 
   let y = Math.floor(Math.random() * 10);
@@ -35,7 +37,7 @@ function generateColumn(length) {
 
     x++;
 
-    if (x >= 10) {
+    if (x >= 10 || callback(x, y)) {
       coordinates = [];
       y = Math.floor(Math.random() * 10);
       x = y;
