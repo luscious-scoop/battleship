@@ -16,6 +16,13 @@ export const Gameboard = () => {
 
   createBoard();
 
+  function isShipAtCoordinates(x, y) {
+    if (typeof board[x][y] === 'string') {
+      return true;
+    }
+    return false;
+  }
+
   function placeShip(length, name, points) {
     if (ships.has(name)) {
       return;
@@ -26,11 +33,9 @@ export const Gameboard = () => {
     for (let i = 0; i < points.length; i++) {
       const [x, y] = points[i];
 
-      if (typeof board[x][y] === 'string') {
-        continue;
+      if (!isShipAtCoordinates(x, y)) {
+        board[x][y] = ship.shipName();
       }
-
-      board[x][y] = ship.shipName();
     }
   }
 
@@ -79,5 +84,6 @@ export const Gameboard = () => {
     getShips,
     receiveAttack,
     areShipsSunk,
+    isShipAtCoordinates,
   });
 };
