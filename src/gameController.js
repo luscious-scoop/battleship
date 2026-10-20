@@ -1,5 +1,6 @@
 import { Player } from './player.js';
 import { createCoordinates, generatePairOfCoordinates } from './helper.js';
+import { computer } from './computer.js';
 
 export const gameController = (playerOneName) => {
   const ships = [
@@ -34,10 +35,8 @@ export const gameController = (playerOneName) => {
     },
   ];
 
-  const players = [Player(playerOneName, 'human'), Player('computer', 'AI')];
-
-  let playerOne = players[0];
-  let opponent = players[1];
+  let playerOne = Player(playerOneName, 'human');
+  let opponent = computer;
 
   function sendShipsToPlayerBoard(ship, coordinates = null) {
     let board = playerOne.getPlayerBoard();
