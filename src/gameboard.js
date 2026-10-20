@@ -9,7 +9,7 @@ export const Gameboard = () => {
       board.push([]);
 
       for (let j = 0; j < 10; j++) {
-        board[i].push(-1);
+        board[i].push(null);
       }
     }
   }
