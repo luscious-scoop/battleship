@@ -1,5 +1,6 @@
 import { Player } from './player.js';
-import { createCoordinates } from './helper.js';
+import { createCoordinates, generatePairOfCoordinates } from './helper.js';
+
 export const gameController = (playerOneName) => {
   const ships = [
     {
@@ -35,16 +36,11 @@ export const gameController = (playerOneName) => {
 
   const players = [Player(playerOneName, 'human'), Player('computer', 'AI')];
 
-  let activePlayer = players[0];
   let playerOne = players[0];
   let opponent = players[1];
 
-  function switchPlayers() {
-    activePlayer = activePlayer === players[0] ? players[1] : players[0];
-  }
-
   function sendShipsToPlayerBoard(ship, coordinates = null) {
-    let board = activePlayer.getPlayerBoard();
+    let board = playerOne.getPlayerBoard();
 
     board.placeShip(ship.length, ship.name, coordinates);
   }
@@ -61,18 +57,16 @@ export const gameController = (playerOneName) => {
     const result = winHandler();
 
     if (result) {
-      console.log(`${activePlayer.getPlayerName()} Won`);
+      console.log(`${playerOne.getPlayerName()} Won`);
       return;
-    } else {
-      switchPlayers();
     }
     printRound();
   }
 
   function printRound() {
-    console.log(activePlayer.getPlayerName());
+    console.log(playerOne.getPlayerName());
 
-    console.log(activePlayer.getPlayerBoard().getBoard());
+    console.log(playerOne.getPlayerBoard().getBoard());
 
     console.log(opponent.getPlayerName());
 
@@ -82,7 +76,7 @@ export const gameController = (playerOneName) => {
   function placeShipsRandomly(ship) {
     let coordinates = createCoordinates(
       ship.length,
-      activePlayer.getPlayerBoard().isCoordinatesOccupied
+      playerOne.getPlayerBoard().isCoordinatesOccupied
     );
 
     let secondCoordinates = createCoordinates(
@@ -99,13 +93,13 @@ export const gameController = (playerOneName) => {
   }
 
   function winHandler() {
-    let playerBoard = activePlayer.getPlayerBoard();
+    let playerBoard = playerOne.getPlayerBoard();
     let opponentBoard = opponent.getPlayerBoard();
 
     if (playerBoard.areShipsSunk()) {
       return opponent.getPlayerName();
     } else if (opponentBoard.areShipsSunk()) {
-      return activePlayer.getPlayerName();
+      return playerOne.getPlayerName();
     }
 
     return false;

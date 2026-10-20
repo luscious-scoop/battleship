@@ -4,7 +4,7 @@ export function createCoordinates(length, occupiedCoordinates) {
     : generateColumn(length, occupiedCoordinates);
 }
 
-function generatePairOfCoordinates(max) {
+export function generatePairOfCoordinates(max) {
   const x = Math.floor(Math.random() * max);
   const y = Math.floor(Math.random() * max);
 
