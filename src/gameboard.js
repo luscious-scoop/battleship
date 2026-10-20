@@ -56,11 +56,7 @@ export const Gameboard = () => {
   function receiveAttack(points) {
     const [x, y] = points;
 
-    const isShip = typeof board[x][y] === 'string' ? true : false;
-
-    const isEmpty = board[x][y] === null ? true : false;
-
-    const alreadyHit = board[x][y] === 0 || board[x][y] === 1 ? true : false;
+    let isShip = typeof board[x][y] === 'string' ? true : false;
 
     if (isShip) {
       const ship = ships.get(board[x][y]);
@@ -68,13 +64,12 @@ export const Gameboard = () => {
       ship.hit();
 
       console.log('you hit the ship');
-      board[x][y] = 1;
-    } else if (isEmpty) {
-      console.log('you missed');
-      board[x][y] = 0;
-    } else if (alreadyHit) {
-      console.log('you already hit that coordinate');
+      board[x][y] = null;
+
+      return true;
     }
+    console.log('you missed');
+    return false;
   }
 
   function areShipsSunk() {
