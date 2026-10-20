@@ -1,48 +1,40 @@
-export function createCoordinates(length, callback) {
-  return Math.random() >= 0.5
-    ? generateRow(length, callback)
-    : generateColumn(length, callback);
+export function createCoordinates(length) {
+  return Math.random() >= 0.5 ? generateRow(length) : generateColumn(length);
 }
 
-function generateRow(length, callback) {
-  let coordinates = [];
+function generateRow(length) {
+  const row = [];
+
+  let randomX = Math.floor(Math.random() * 10);
+
+  let randomY = Math.floor(Math.random() * 10);
+
+  let x = randomX + length <= 9 ? randomX : Math.floor((randomX + length) % 9);
+  let y = randomY + length <= 9 ? randomY : Math.floor((randomY + length) % 9);
+
+  for (let i = 0; i < length; i++) {
+    row.push([x, y]);
+
+    y++;
+  }
+
+  console.log(row);
+}
+
+function generateColumn(length) {
+  const column = [];
 
   let x = Math.floor(Math.random() * 10);
 
-  let y = x;
-
-  while (coordinates.length !== length) {
-    coordinates.push([x, y]);
-
-    y++;
-
-    if (y >= 10 || callback(x, y)) {
-      coordinates = [];
-      x = Math.floor(Math.random() * 10);
-      y = x;
-    }
-  }
-
-  return coordinates;
-}
-function generateColumn(length, callback) {
-  let coordinates = [];
-
   let y = Math.floor(Math.random() * 10);
 
-  let x = y;
-
-  while (coordinates.length !== length) {
-    coordinates.push([x, y]);
+  for (let i = 0; i < length; i++) {
+    column.push([x, y]);
 
     x++;
-
-    if (x >= 10 || callback(x, y)) {
-      coordinates = [];
-      y = Math.floor(Math.random() * 10);
-      x = y;
-    }
   }
 
-  return coordinates;
+  console.log(column);
 }
+
+generateRow(3);
