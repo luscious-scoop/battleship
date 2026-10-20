@@ -87,6 +87,7 @@ export const Gameboard = () => {
   const getBoard = () => board;
 
   const getShips = () => ships;
+  const getOccupiedCoordinates = () => occupiedCoordinates;
   return Object.freeze({
     getBoard,
     placeShip,
@@ -94,5 +95,6 @@ export const Gameboard = () => {
     receiveAttack,
     areShipsSunk,
     isShipAtCoordinates,
+    getOccupiedCoordinates,
   });
 };
