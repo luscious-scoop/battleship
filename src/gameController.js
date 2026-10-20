@@ -79,28 +79,23 @@ export const gameController = (playerOneName) => {
     console.log(opponent.getPlayerBoard().getBoard());
   }
 
-  function placeShipsRandomly(playerOne = false, playerTwo = false) {
-    for (let ship of ships) {
-      let firstCoordinates = createCoordinates(
-        ship.length,
-        activePlayer.getPlayerBoard().isShipAtCoordinates
-      );
-      let secondCoordinates = createCoordinates(
-        ship.length,
-        opponent.getPlayerBoard().isShipAtCoordinates
-      );
-      if (playerOne) {
-        sendShipsToPlayerBoard(ship, firstCoordinates);
-      }
-      if (playerTwo) {
-        sendShipsToOpponentBoard(ship, secondCoordinates);
-      }
-    }
-    console.log('player');
-    console.log(activePlayer.getPlayerBoard().getBoard());
+  function placeShipsRandomly(ship) {
+    let coordinates = createCoordinates(
+      ship.length,
+      activePlayer.getPlayerBoard().isCoordinatesOccupied
+    );
 
-    console.log('opp');
-    console.log(opponent.getPlayerBoard().getBoard());
+    let secondCoordinates = createCoordinates(
+      ship.length,
+      opponent.getPlayerBoard().isCoordinatesOccupied
+    );
+
+    sendShipsToPlayerBoard(ship, coordinates);
+    sendShipsToOpponentBoard(ship, secondCoordinates);
+
+    console.log(coordinates);
+
+    console.log(secondCoordinates);
   }
 
   function winHandler() {

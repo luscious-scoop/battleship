@@ -96,5 +96,6 @@ export const Gameboard = () => {
     areShipsSunk,
     isShipAtCoordinates,
     getOccupiedCoordinates,
+    isCoordinatesOccupied,
   });
 };
