@@ -2,7 +2,7 @@ import { Player } from './player.js';
 import { createCoordinates, generatePairOfCoordinates } from './helper.js';
 import { computer } from './computer.js';
 
-export const gameController = (playerOneName) => {
+export const gameController = (playerOneName = 'user') => {
   const ships = [
     {
       length: 5,
