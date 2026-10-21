@@ -91,6 +91,8 @@ export const gameController = (playerOneName = 'user') => {
     console.log(playerOne.getPlayerBoard().getBoard());
     console.log('opponent');
     console.log(opponent.getPlayerBoard().getBoard());
+
+    return coordinates;
   }
 
   function winHandler() {
