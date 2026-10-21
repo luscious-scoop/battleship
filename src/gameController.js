@@ -106,6 +106,11 @@ export const gameController = (playerOneName) => {
     return false;
   }
 
+  function clearPlayersBoard() {
+    playerOne.getPlayerBoard().clearBoard();
+    opponent.getPlayerBoard().clearBoard();
+  }
+
   const getPlayerOne = () => playerOne;
   const getOpponent = () => opponent;
   const getShips = () => ships;
@@ -117,5 +122,6 @@ export const gameController = (playerOneName) => {
     getPlayerOne,
     getOpponent,
     getShips,
+    clearPlayersBoard,
   });
 };
