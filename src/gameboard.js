@@ -45,7 +45,7 @@ export const Gameboard = () => {
       const [x, y] = points[i];
 
       if (!isCoordinatesOccupied(x, y)) {
-        board[x][y] === ship.shipName();
+        board[x][y] = ship.shipName();
       } else {
         throw new Error('this coordinate is occupied');
       }
