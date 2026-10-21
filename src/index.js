@@ -59,29 +59,6 @@ const ships = [
   },
 ];
 
-const game = gameController();
-
-game.sendShipsToPlayerBoard(ships[0], [
-  [4, 0],
-  [4, 1],
-  [4, 2],
-  [4, 3],
-  [4, 4],
-]);
-game.sendShipsToOpponentBoard(ships[0], [
-  [4, 0],
-  [4, 1],
-  [4, 2],
-  [4, 3],
-  [4, 4],
-]);
-
-game.playRound([4, 0]);
-game.playRound([4, 1]);
-game.playRound([4, 2]);
-game.playRound([4, 3]);
-game.playRound([4, 4]);
-
 // human
 // game.playRound([0, 0]);
 
