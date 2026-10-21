@@ -5,6 +5,10 @@ const Computer = () => {
   function makeComputerMove() {
     let randomCoordinates = generatePairOfCoordinates(10);
 
+    if (previousComputerCoordinates.length === 0) {
+      previousComputerCoordinates.push(randomCoordinates);
+      return randomCoordinates;
+    }
     for (let i = 0; i < previousComputerCoordinates.length; i++) {
       if (
         previousComputerCoordinates[i][0] === randomCoordinates[0] &&
@@ -19,7 +23,7 @@ const Computer = () => {
   }
 
   return Object.freeze({
-    player: Player('computer', 'AI'),
+    ...Player('computer', 'AI'),
     makeComputerMove,
   });
 };
