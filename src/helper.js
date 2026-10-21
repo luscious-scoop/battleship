@@ -17,7 +17,7 @@ function generateRow(length, occupiedCoordinates) {
   let [x, y] = generatePairOfCoordinates(10);
 
   while (row.length !== length) {
-    if (occupiedCoordinates) {
+    if (occupiedCoordinates(x, y) || y > 9) {
       [x, y] = generatePairOfCoordinates(10);
       row = [];
     } else {
@@ -37,7 +37,7 @@ function generateColumn(length, occupiedCoordinates) {
   let [x, y] = generatePairOfCoordinates(10);
 
   while (column.length !== length) {
-    if (occupiedCoordinates) {
+    if (occupiedCoordinates(x, y) || x > 9) {
       [x, y] = generatePairOfCoordinates(10);
       column = [];
     } else {

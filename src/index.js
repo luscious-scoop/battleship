@@ -27,15 +27,60 @@ import { gameController } from './gameController.js';
 
 // console.log(board.AreShipsSunk());
 
+const ships = [
+  {
+    length: 5,
+    name: 'battleship',
+  },
+
+  {
+    length: 4,
+    name: 'carrier',
+  },
+
+  {
+    length: 3,
+    name: 'bomber',
+  },
+
+  {
+    length: 3,
+    name: 'submarine',
+  },
+
+  {
+    length: 2,
+    name: 'boat',
+  },
+
+  {
+    length: 2,
+    name: 'sonar',
+  },
+];
+
 const game = gameController();
 
-game.sendShipsToPlayerBoard({ length: 3, name: 'bomber' });
+game.sendShipsToPlayerBoard(ships[0], [
+  [4, 0],
+  [4, 1],
+  [4, 2],
+  [4, 3],
+  [4, 4],
+]);
+game.sendShipsToOpponentBoard(ships[0], [
+  [4, 0],
+  [4, 1],
+  [4, 2],
+  [4, 3],
+  [4, 4],
+]);
 
-game.sendShipsToPlayerBoard({ length: 4, name: 'carrier' });
-
-game.sendShipsToOpponentBoard({ length: 4, name: 'carrier' });
-
-game.sendShipsToOpponentBoard({ length: 3, name: 'bomber' });
+game.playRound([4, 0]);
+game.playRound([4, 1]);
+game.playRound([4, 2]);
+game.playRound([4, 3]);
+game.playRound([4, 4]);
 
 // human
 // game.playRound([0, 0]);
