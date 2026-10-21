@@ -105,10 +105,17 @@ export const gameController = (playerOneName) => {
 
     return false;
   }
+
+  const getPlayerOne = () => playerOne;
+  const getOpponent = () => opponent;
+  const getShips = () => ships;
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
     playRound,
     placeShipsRandomly,
+    getPlayerOne,
+    getOpponent,
+    getShips,
   });
 };
