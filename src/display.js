@@ -9,6 +9,7 @@ export const display = () => {
     const board = player.getPlayerBoard().getBoard();
 
     const boardContainer = document.createElement('div');
+    boardContainer.classList.add('board');
     boardContainer.dataset.player = player.getPlayerName();
 
     for (let i = 0; i < board.length; i++) {
@@ -29,6 +30,7 @@ export const display = () => {
     }
     boardsContainer.appendChild(boardContainer);
   }
+  renderBoard(game.getPlayerOne());
 
   function createDiv() {
     return document.createElement('div');
