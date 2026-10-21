@@ -1,7 +1,7 @@
 import { Ship } from './ship.js';
 
 export const Gameboard = () => {
-  const board = [];
+  let board = [];
   const ships = new Map();
 
   const occupiedCoordinates = [];
@@ -88,6 +88,11 @@ export const Gameboard = () => {
 
   const getShips = () => ships;
   const getOccupiedCoordinates = () => occupiedCoordinates;
+
+  function clearBoard() {
+    board = [];
+    createBoard();
+  }
   return Object.freeze({
     getBoard,
     placeShip,
@@ -97,5 +102,6 @@ export const Gameboard = () => {
     isShipAtCoordinates,
     getOccupiedCoordinates,
     isCoordinatesOccupied,
+    clearBoard,
   });
 };
