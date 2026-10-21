@@ -3,7 +3,7 @@ import { gameController } from './gameController.js';
 export const display = () => {
   const game = gameController();
 
-  const boardsContainer = document.querySelector('main');
+  const boardsContainer = document.querySelector('.boards-container');
 
   function renderBoard(player) {
     const board = player.getPlayerBoard().getBoard();
