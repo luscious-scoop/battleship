@@ -51,7 +51,9 @@ export const gameController = (playerOneName) => {
   }
 
   function playRound(coordinates) {
-    opponent.getPlayerBoard().receiveAttack(coordinates);
+    let computerMove = opponent.makeComputerMove();
+    playerOne.getPlayerBoard().receiveAttack(coordinates);
+    opponent.getPlayerBoard().receiveAttack(computerMove);
 
     const result = winHandler();
 
@@ -85,10 +87,10 @@ export const gameController = (playerOneName) => {
 
     sendShipsToPlayerBoard(ship, coordinates);
     sendShipsToOpponentBoard(ship, secondCoordinates);
-
-    console.log(coordinates);
-
-    console.log(secondCoordinates);
+    console.log('player');
+    console.log(playerOne.getPlayerBoard().getBoard());
+    console.log('opponent');
+    console.log(opponent.getPlayerBoard().getBoard());
   }
 
   function winHandler() {
