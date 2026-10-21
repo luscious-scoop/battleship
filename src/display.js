@@ -33,4 +33,28 @@ export const display = () => {
   function createDiv() {
     return document.createElement('div');
   }
+
+  function createShips() {
+    const ships = game.getShips();
+
+    const shipsElArray = [];
+    for (const ship of ships) {
+      let row = createDiv();
+
+      row.classList.add('ship-row');
+
+      row.dataset.name = ship.name;
+      row.dataset.length = ship.length;
+
+      for (let i = 0; i < ship.length; i++) {
+        let square = createDiv();
+
+        square.classList.add('ship-square');
+        row.appendChild(square);
+      }
+
+      shipsElArray.push(row);
+    }
+    return shipsElArray;
+  }
 };
