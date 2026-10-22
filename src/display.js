@@ -50,6 +50,7 @@ export const display = () => {
 
       for (let i = 0; i < ship.length; i++) {
         let square = createDiv();
+        square.textContent = ship.length;
 
         square.classList.add('ship-square');
         row.appendChild(square);
@@ -59,4 +60,41 @@ export const display = () => {
     }
     return shipsElArray;
   }
+
+  function clearBoardSquares() {
+    const squares = document.querySelectorAll('.board-square');
+
+    squares.forEach((square) => {
+      square.textContent = '';
+    });
+  }
+
+  function placeShips() {
+    let ships = createShips();
+
+    clearBoardSquares();
+
+    ships.forEach((ship) => {
+      let data = {
+        name: ship.dataset.name,
+        length: Number(ship.dataset.length),
+      };
+      let coordinates = game.placeShipsRandomly(data);
+
+      let shipSquares = ship.querySelectorAll('.ship-square');
+      console.log(coordinates);
+      shipSquares.forEach((square, i) => {
+        let pairOfCoordinates = coordinates[i];
+
+        let boardSquare = document.querySelector(
+          `[data-x="${pairOfCoordinates[0]}"][data-y="${pairOfCoordinates[1]}"]`
+        );
+        boardSquare.appendChild(square);
+      });
+    });
+  }
+
+  let randomize = document.querySelector('button:first-child');
+
+  randomize.addEventListener('click', placeShips);
 };
