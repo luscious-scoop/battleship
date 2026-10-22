@@ -13,20 +13,20 @@ export const display = () => {
     boardContainer.dataset.player = player.getPlayerName();
 
     for (let i = 0; i < board.length; i++) {
-      let row = createDiv();
+      let column = createDiv();
 
-      row.classList.add('board-row');
+      column.classList.add('board-column');
 
       for (let j = 0; j < board.length; j++) {
         let square = createDiv();
-        square.dataset.x = i;
-        square.dataset.y = j;
+        square.dataset.x = j;
+        square.dataset.y = i;
 
         square.classList.add('board-square');
 
-        row.append(square);
+        column.appendChild(square);
       }
-      boardContainer.appendChild(row);
+      boardContainer.appendChild(column);
     }
     boardsContainer.appendChild(boardContainer);
   }
@@ -82,7 +82,7 @@ export const display = () => {
       let coordinates = game.placeShipsRandomly(data);
 
       let shipSquares = ship.querySelectorAll('.ship-square');
-      console.log(coordinates);
+
       shipSquares.forEach((square, i) => {
         let pairOfCoordinates = coordinates[i];
 
