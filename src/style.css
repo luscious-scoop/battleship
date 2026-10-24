@@ -94,3 +94,7 @@ main {
   height: 35px;
   border: 3px solid pink;
 }
+.boards-container {
+  display: flex;
+  gap: 68px;
+}
