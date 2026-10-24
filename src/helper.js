@@ -16,18 +16,25 @@ function generateRow(length, occupiedCoordinates) {
 
   let [x, y] = generatePairOfCoordinates(10);
 
-  while (row.length !== length) {
-    if (occupiedCoordinates(x, y) || y > 9) {
+  let isCoordinatesOccupied = true;
+  while (isCoordinatesOccupied) {
+    if (y > 9) {
       [x, y] = generatePairOfCoordinates(10);
       row = [];
     } else {
       row.push([x, y]);
     }
-
     y++;
+
+    if (row.length === length) {
+      isCoordinatesOccupied = occupiedCoordinates(row);
+
+      if (isCoordinatesOccupied) {
+        row = [];
+      }
+    }
   }
 
-  console.log(row);
   return row;
 }
 
@@ -36,17 +43,23 @@ function generateColumn(length, occupiedCoordinates) {
 
   let [x, y] = generatePairOfCoordinates(10);
 
-  while (column.length !== length) {
-    if (occupiedCoordinates(x, y) || x > 9) {
+  let isCoordinatesOccupied = true;
+  while (isCoordinatesOccupied) {
+    if (x > 9) {
       [x, y] = generatePairOfCoordinates(10);
       column = [];
     } else {
       column.push([x, y]);
     }
-
     x++;
+    if (column.length === length) {
+      isCoordinatesOccupied = occupiedCoordinates(column);
+
+      if (isCoordinatesOccupied) {
+        column = [];
+      }
+    }
   }
 
-  console.log('column');
   return column;
 }
