@@ -12,6 +12,8 @@ export const display = () => {
     enableDeployButton();
   });
 
+  deployBtn.addEventListener('click', startGame);
+
   function renderBoard(player) {
     const board = player.getPlayerBoard().getBoard();
 
@@ -108,5 +110,43 @@ export const display = () => {
     if (areShipsPlaced) {
       deployBtn.disabled = false;
     }
+  }
+
+  function startGame() {
+    let opponent = game.getOpponent();
+    renderBoard(opponent);
+
+    let initialButtons = document.querySelector('.initial-screen-btns');
+    initialButtons.style.display = 'none';
+  }
+
+  function playGame() {
+    let x;
+    let y;
+    let opponentBoard = document.querySelector('.board-nth-child(2)');
+
+    opponentBoard.addEventListener('click', (e) => {
+      if (e.target.dataset.x && e.target.y) {
+        x = Number(e.target.dataset.x);
+
+        y = Number(e.target.dataset.y);
+      } else {
+        return;
+      }
+
+      game.playRound([x, y]);
+    });
+  }
+
+  function createDot(isHit) {
+    const color = isHit === true ? 'red' : 'white';
+
+    let dot = createDiv();
+
+    dot.classList.add('.dot');
+
+    dot.style.backgroundColor = color;
+
+    return dot;
   }
 };
