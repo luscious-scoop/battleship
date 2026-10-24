@@ -52,8 +52,8 @@ export const gameController = (playerOneName = 'user') => {
 
   function playRound(coordinates) {
     let computerMove = opponent.makeComputerMove();
-    playerOne.getPlayerBoard().receiveAttack(coordinates);
-    opponent.getPlayerBoard().receiveAttack(computerMove);
+    opponent.getPlayerBoard().receiveAttack(coordinates);
+    playerOne.getPlayerBoard().receiveAttack(computerMove);
 
     const result = winHandler();
 
@@ -69,9 +69,12 @@ export const gameController = (playerOneName = 'user') => {
 
     console.log(playerOne.getPlayerBoard().getBoard());
 
+    console.log(playerOne.getPlayerBoard().getAttackedCoordinates());
+
     console.log(opponent.getPlayerName());
 
     console.log(opponent.getPlayerBoard().getBoard());
+    console.log(opponent.getPlayerBoard().getAttackedCoordinates());
   }
 
   function placeShipsRandomly(ship) {
@@ -86,6 +89,8 @@ export const gameController = (playerOneName = 'user') => {
 
     console.log('player coordinates');
     console.log(coordinates);
+    console.log('opponent coordinates');
+    console.log(secondCoordinates);
     return coordinates;
   }
 

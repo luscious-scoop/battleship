@@ -118,35 +118,67 @@ export const display = () => {
 
     let initialButtons = document.querySelector('.initial-screen-btns');
     initialButtons.style.display = 'none';
-  }
 
-  function playGame() {
-    let x;
-    let y;
-    let opponentBoard = document.querySelector('.board-nth-child(2)');
-
-    opponentBoard.addEventListener('click', (e) => {
-      if (e.target.dataset.x && e.target.y) {
-        x = Number(e.target.dataset.x);
-
-        y = Number(e.target.dataset.y);
-      } else {
-        return;
-      }
-
-      game.playRound([x, y]);
+    let board = boardsContainer.querySelector('.board:nth-child(2)');
+    board.addEventListener('click', (e) => {
+      playGame(e);
     });
   }
 
+  function playGame(e) {
+    let x;
+    let y;
+
+    if (e.target.dataset.x && e.target.dataset.y) {
+      x = Number(e.target.dataset.x);
+
+      y = Number(e.target.dataset.y);
+    } else {
+      return;
+    }
+
+    game.playRound([x, y]);
+    renderResultOnBoards();
+  }
+
   function createDot(isHit) {
-    const color = isHit === true ? 'red' : 'white';
+    const color = isHit === true ? 'red' : 'black';
 
     let dot = createDiv();
 
-    dot.classList.add('.dot');
+    dot.classList.add('dot');
 
     dot.style.backgroundColor = color;
 
     return dot;
+  }
+
+  function renderResultOnBoards() {
+    let { playerAttackedCoordinates, opponentAttackedCoordinates } =
+      game.getBothPlayersAttackedCoordinates();
+
+    let playerBoard = document.querySelector('.board:first-child');
+
+    let opponentBoard = document.querySelector('.board:nth-child(2)');
+
+    for (let result of playerAttackedCoordinates) {
+      let isHit = result.isHit;
+      let coordinates = result.coordinates;
+      let boardSquare = playerBoard.querySelector(
+        `[data-x="${coordinates[0]}"][data-y="${coordinates[1]}"]`
+      );
+
+      boardSquare.appendChild(createDot(isHit));
+    }
+
+    for (let result of opponentAttackedCoordinates) {
+      let isHit = result.isHit;
+      let coordinates = result.coordinates;
+      let boardSquare = opponentBoard.querySelector(
+        `[data-x="${coordinates[0]}"][data-y="${coordinates[1]}"]`
+      );
+
+      boardSquare.appendChild(createDot(isHit));
+    }
   }
 };

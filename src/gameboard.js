@@ -54,9 +54,6 @@ export const Gameboard = () => {
       board[x][y] = ship.shipName();
     }
     ships.set(ship.shipName(), ship);
-
-    console.log('occupied Coordinates');
-    console.log(occupiedCoordinates);
   }
 
   function receiveAttack(points) {
