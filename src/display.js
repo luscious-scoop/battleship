@@ -168,7 +168,18 @@ export const display = () => {
         `[data-x="${coordinates[0]}"][data-y="${coordinates[1]}"]`
       );
 
-      boardSquare.appendChild(createDot(isHit));
+      let dot = createDot(isHit);
+      if (isHit) {
+        let ship = boardSquare.querySelector('.ship-square');
+        boardSquare.textContent = '';
+        ship.textContent = '';
+
+        ship.appendChild(dot);
+        boardSquare.appendChild(ship);
+      } else {
+        boardSquare.textContent = '';
+        boardSquare.appendChild(dot);
+      }
     }
 
     for (let result of opponentAttackedCoordinates) {
@@ -177,6 +188,7 @@ export const display = () => {
       let boardSquare = opponentBoard.querySelector(
         `[data-x="${coordinates[0]}"][data-y="${coordinates[1]}"]`
       );
+      boardSquare.textContent = '';
 
       boardSquare.appendChild(createDot(isHit));
     }
