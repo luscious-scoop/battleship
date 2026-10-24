@@ -4,7 +4,7 @@ export const Gameboard = () => {
   let board = [];
   const ships = new Map();
 
-  const occupiedCoordinates = [];
+  let occupiedCoordinates = [];
 
   function createBoard() {
     for (let i = 0; i < 10; i++) {
@@ -25,32 +25,36 @@ export const Gameboard = () => {
     return false;
   }
 
-  function isCoordinatesOccupied(x, y) {
-    for (let i = 0; i < occupiedCoordinates.length; i++) {
-      if (occupiedCoordinates[i][0] === x && occupiedCoordinates[i][1] === y) {
-        return true;
+  function isCoordinatesOccupied(Coordinates) {
+    if (occupiedCoordinates.length === 0) return false;
+
+    for (let i = 0; i < Coordinates.length; i++) {
+      for (let j = 0; j < occupiedCoordinates.length; j++) {
+        if (
+          Coordinates[i][0] === occupiedCoordinates[j][0] &&
+          Coordinates[i][1] === occupiedCoordinates[j][1]
+        ) {
+          return true;
+        }
       }
     }
     return false;
   }
 
   function placeShip(length, name, points) {
-    if (ships.has(name)) {
-      return;
-    }
+    occupiedCoordinates.push(...points);
+
     const ship = Ship(length, name);
-    ships.set(ship.shipName(), ship);
 
     for (let i = 0; i < points.length; i++) {
       const [x, y] = points[i];
 
-      if (!isCoordinatesOccupied(x, y)) {
-        board[x][y] = ship.shipName();
-      } else {
-        throw new Error('this coordinate is occupied');
-      }
+      board[x][y] = ship.shipName();
     }
-    occupiedCoordinates.push(...points);
+    ships.set(ship.shipName(), ship);
+
+    console.log('occupied Coordinates');
+    console.log(occupiedCoordinates);
   }
 
   function receiveAttack(points) {
@@ -91,6 +95,7 @@ export const Gameboard = () => {
 
   function clearBoard() {
     board = [];
+    occupiedCoordinates = [];
     createBoard();
   }
   return Object.freeze({
