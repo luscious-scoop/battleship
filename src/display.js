@@ -73,7 +73,7 @@ export const display = () => {
     let ships = createShips();
 
     clearBoardSquares();
-    game.getPlayerOne().getPlayerBoard().clearBoard();
+    game.clearPlayersBoard();
 
     ships.forEach((ship) => {
       let data = {
