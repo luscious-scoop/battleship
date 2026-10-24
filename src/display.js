@@ -5,6 +5,7 @@ export const display = () => {
 
   const boardsContainer = document.querySelector('.boards-container');
   const randomizeBtn = document.querySelector('button:first-child');
+  const deployBtn = document.querySelector('button:nth-child(2)');
 
   randomizeBtn.addEventListener('click', placeShips);
 
@@ -98,5 +99,10 @@ export const display = () => {
     });
   }
 
-  function startGame() {}
+  // function startGame() {
+  //   let areShipsPlaced = game.areBothPlayersShipsPlaced();
+
+  //   if (areShipsPlaced) {
+  //   }
+  // }
 };
