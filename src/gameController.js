@@ -120,6 +120,20 @@ export const gameController = (playerOneName = 'user') => {
   const getOpponent = () => opponent;
   const getShips = () => ships;
 
+  function getBothPlayersAttackedCoordinates() {
+    let playerAttackedCoordinates = playerOne
+      .getPlayerBoard()
+      .getAttackedCoordinates();
+    let opponentAttackedCoordinates = opponent
+      .getPlayerBoard()
+      .getAttackedCoordinates();
+
+    return {
+      playerAttackedCoordinates,
+      opponentAttackedCoordinates,
+    };
+  }
+
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
@@ -130,5 +144,6 @@ export const gameController = (playerOneName = 'user') => {
     getShips,
     clearPlayersBoard,
     areBothPlayersShipsPlaced,
+    getBothPlayersAttackedCoordinates,
   });
 };
