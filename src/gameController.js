@@ -107,9 +107,19 @@ export const gameController = (playerOneName = 'user') => {
     opponent.getPlayerBoard().clearBoard();
   }
 
+  function areBothPlayersShipsPlaces() {
+    let isPlayerOneShipsPlaces = playerOne.getPlayerBoard().isAllShipsPlaced();
+    let isOpponentShipsPlaced = opponent.getPlayerBoard().isAllShipsPlaced();
+    if (isPlayerOneShipsPlaces && isOpponentShipsPlaced) {
+      return true;
+    }
+    return false;
+  }
+
   const getPlayerOne = () => playerOne;
   const getOpponent = () => opponent;
   const getShips = () => ships;
+
   return Object.freeze({
     sendShipsToPlayerBoard,
     sendShipsToOpponentBoard,
@@ -119,5 +129,6 @@ export const gameController = (playerOneName = 'user') => {
     getOpponent,
     getShips,
     clearPlayersBoard,
+    areBothPlayersShipsPlaces,
   });
 };
