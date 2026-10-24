@@ -4,6 +4,9 @@ export const display = () => {
   const game = gameController();
 
   const boardsContainer = document.querySelector('.boards-container');
+  const randomizeBtn = document.querySelector('button:first-child');
+
+  randomizeBtn.addEventListener('click', placeShips);
 
   function renderBoard(player) {
     const board = player.getPlayerBoard().getBoard();
@@ -95,7 +98,5 @@ export const display = () => {
     });
   }
 
-  let randomize = document.querySelector('button:first-child');
-
-  randomize.addEventListener('click', placeShips);
+  function startGame() {}
 };
