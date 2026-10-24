@@ -150,5 +150,6 @@ export const gameController = (playerOneName = 'user') => {
     clearPlayersBoard,
     areBothPlayersShipsPlaced,
     getBothPlayersAttackedCoordinates,
+    winHandler,
   });
 };
