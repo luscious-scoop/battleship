@@ -1,5 +1,5 @@
 import { Player } from './player.js';
-import { createCoordinates, generatePairOfCoordinates } from './helper.js';
+import { createCoordinates } from './helper.js';
 import { computer } from './computer.js';
 
 export const gameController = (playerOneName = 'user') => {
@@ -75,23 +75,17 @@ export const gameController = (playerOneName = 'user') => {
   }
 
   function placeShipsRandomly(ship) {
-    let coordinates = createCoordinates(
-      ship.length,
-      playerOne.getPlayerBoard().isCoordinatesOccupied
-    );
+    let playerCallback = playerOne.getPlayerBoard().isCoordinatesOccupied;
+    let opponentCallback = opponent.getPlayerBoard().isCoordinatesOccupied;
+    let coordinates = createCoordinates(ship.length, playerCallback);
 
-    let secondCoordinates = createCoordinates(
-      ship.length,
-      opponent.getPlayerBoard().isCoordinatesOccupied
-    );
+    let secondCoordinates = createCoordinates(ship.length, opponentCallback);
 
     sendShipsToPlayerBoard(ship, coordinates);
     sendShipsToOpponentBoard(ship, secondCoordinates);
-    console.log('player');
-    console.log(playerOne.getPlayerBoard().getBoard());
-    console.log('opponent');
-    console.log(opponent.getPlayerBoard().getBoard());
 
+    console.log('player coordinates');
+    console.log(coordinates);
     return coordinates;
   }
 
