@@ -4,8 +4,8 @@ export const display = () => {
   const game = gameController();
 
   const boardsContainer = document.querySelector('.boards-container');
-  const randomizeBtn = document.querySelector('button:first-child');
-  const deployBtn = document.querySelector('button:nth-child(2)');
+  const randomizeBtn = document.querySelector('.randomize-btn');
+  const deployBtn = document.querySelector('.deploy-btn');
 
   randomizeBtn.addEventListener('click', placeShips);
 
