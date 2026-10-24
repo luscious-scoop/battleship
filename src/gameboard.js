@@ -4,6 +4,8 @@ export const Gameboard = () => {
   let board = [];
   const ships = new Map();
 
+  const attackedCoordinates = [];
+
   let occupiedCoordinates = [];
 
   function createBoard() {
@@ -62,18 +64,25 @@ export const Gameboard = () => {
 
     let isShip = typeof board[x][y] === 'string' ? true : false;
 
+    let result = {
+      isHit: false,
+      coordinates: points,
+    };
+
     if (isShip) {
       const ship = ships.get(board[x][y]);
 
       ship.hit();
 
-      console.log('you hit the ship');
+      result.isHit = true;
+
       board[x][y] = null;
 
-      return true;
+      console.log('you hit');
+    } else {
+      console.log('you missed');
     }
-    console.log('you missed');
-    return false;
+    attackedCoordinates.push(result);
   }
 
   function areShipsSunk() {
@@ -100,6 +109,8 @@ export const Gameboard = () => {
   const isAllShipsPlaced = () =>
     occupiedCoordinates.length === 19 ? true : false;
 
+  const getAttackedCoordinates = () => attackedCoordinates;
+
   return Object.freeze({
     getBoard,
     placeShip,
@@ -111,5 +122,6 @@ export const Gameboard = () => {
     isCoordinatesOccupied,
     clearBoard,
     isAllShipsPlaced,
+    getAttackedCoordinates,
   });
 };
