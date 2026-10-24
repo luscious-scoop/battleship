@@ -88,16 +88,18 @@ export const Gameboard = () => {
     return true;
   }
 
-  const getBoard = () => board;
-
-  const getShips = () => ships;
-  const getOccupiedCoordinates = () => occupiedCoordinates;
-
   function clearBoard() {
     board = [];
     occupiedCoordinates = [];
     createBoard();
   }
+
+  const getBoard = () => board;
+  const getShips = () => ships;
+  const getOccupiedCoordinates = () => occupiedCoordinates;
+  const isAllShipsPlaced = () =>
+    occupiedCoordinates.length === 19 ? true : false;
+
   return Object.freeze({
     getBoard,
     placeShip,
@@ -108,5 +110,6 @@ export const Gameboard = () => {
     getOccupiedCoordinates,
     isCoordinatesOccupied,
     clearBoard,
+    isAllShipsPlaced,
   });
 };
