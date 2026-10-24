@@ -139,6 +139,9 @@ export const display = () => {
 
     game.playRound([x, y]);
     renderResultOnBoards();
+    let result = game.winHandler();
+
+    if (result) alert(result);
   }
 
   function createDot(isHit) {
