@@ -7,7 +7,10 @@ export const display = () => {
   const randomizeBtn = document.querySelector('.randomize-btn');
   const deployBtn = document.querySelector('.deploy-btn');
 
-  randomizeBtn.addEventListener('click', placeShips);
+  randomizeBtn.addEventListener('click', () => {
+    placeShips();
+    enableDeployButton();
+  });
 
   function renderBoard(player) {
     const board = player.getPlayerBoard().getBoard();
@@ -99,10 +102,11 @@ export const display = () => {
     });
   }
 
-  // function startGame() {
-  //   let areShipsPlaced = game.areBothPlayersShipsPlaced();
+  function enableDeployButton() {
+    let areShipsPlaced = game.areBothPlayersShipsPlaced();
 
-  //   if (areShipsPlaced) {
-  //   }
-  // }
+    if (areShipsPlaced) {
+      deployBtn.disabled = false;
+    }
+  }
 };
