@@ -107,7 +107,7 @@ export const gameController = (playerOneName = 'user') => {
     opponent.getPlayerBoard().clearBoard();
   }
 
-  function areBothPlayersShipsPlaces() {
+  function areBothPlayersShipsPlaced() {
     let isPlayerOneShipsPlaces = playerOne.getPlayerBoard().isAllShipsPlaced();
     let isOpponentShipsPlaced = opponent.getPlayerBoard().isAllShipsPlaced();
     if (isPlayerOneShipsPlaces && isOpponentShipsPlaced) {
@@ -129,6 +129,6 @@ export const gameController = (playerOneName = 'user') => {
     getOpponent,
     getShips,
     clearPlayersBoard,
-    areBothPlayersShipsPlaces,
+    areBothPlayersShipsPlaced,
   });
 };
