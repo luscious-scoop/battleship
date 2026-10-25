@@ -3,6 +3,9 @@ import { generatePairOfCoordinates } from './helper.js';
 const Computer = () => {
   let previousComputerCoordinates = [];
   function makeComputerMove() {
+    if (previousComputerCoordinates.length >= 100) {
+      throw new RangeError('all possible moves have been made');
+    }
     let randomCoordinates = generatePairOfCoordinates(10);
 
     let isMoveMade = moveAlreadyMade(randomCoordinates);
