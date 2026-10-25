@@ -5,21 +5,31 @@ const Computer = () => {
   function makeComputerMove() {
     let randomCoordinates = generatePairOfCoordinates(10);
 
-    if (previousComputerCoordinates.length === 0) {
-      previousComputerCoordinates.push(randomCoordinates);
-      return randomCoordinates;
+    let isMoveMade = moveAlreadyMade(randomCoordinates);
+
+    while (isMoveMade) {
+      randomCoordinates = generatePairOfCoordinates(10);
+
+      isMoveMade = moveAlreadyMade(randomCoordinates);
     }
+
+    previousComputerCoordinates.push(randomCoordinates);
+
+    return randomCoordinates;
+  }
+
+  function moveAlreadyMade(coordinates) {
+    let [x, y] = coordinates;
+
     for (let i = 0; i < previousComputerCoordinates.length; i++) {
       if (
-        previousComputerCoordinates[i][0] === randomCoordinates[0] &&
-        previousComputerCoordinates[i][1] === randomCoordinates[1]
+        previousComputerCoordinates[i][0] === x &&
+        previousComputerCoordinates[i][1] === y
       ) {
-        randomCoordinates = generatePairOfCoordinates(10);
-      } else {
-        previousComputerCoordinates.push(randomCoordinates);
-        return randomCoordinates;
+        return true;
       }
     }
+    return false;
   }
 
   return Object.freeze({
