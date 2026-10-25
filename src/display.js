@@ -126,6 +126,7 @@ export const display = () => {
   }
 
   function playGame(e) {
+    if (e.target.disabled === true) return;
     let x;
     let y;
 
@@ -140,6 +141,8 @@ export const display = () => {
     game.playRound([x, y]);
     renderResultOnBoards();
     let result = game.winHandler();
+
+    e.target.disabled = true;
 
     if (result) alert(result);
   }
