@@ -210,4 +210,6 @@ export const display = () => {
       header.style.display = 'none';
     }
   }
+
+  renderPlayerHeaders(false);
 };
