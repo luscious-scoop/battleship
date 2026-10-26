@@ -71,31 +71,73 @@ h6 {
   isolation: isolate;
 }
 
+:root {
+  --main-bg-clr: #1d3b32;
+  --board-cell-border: #2d5a4c;
+  --main-text-clr: #e8f1ec;
+  --secondary-text-clr: #a1b8b1;
+  --ship-border-clr: #65ab97;
+  --cell-hover-clr: #438270;
+  --deploy-btn-bg: #2d5a4c;
+  --btn-text-clr: #e8f1ec;
+  --randomize-btn-bg: #263733;
+  --randomize-btn-hover: #334c46;
+  --deploy-btn-hover: #438270;
+  --card-bg-clr: #122a23;
+}
+
+body {
+  background-color: var(--main-bg-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+header {
+  color: var(--main-text-clr);
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  font-size: 1.2rem;
 }
 
 .board {
-  border: 2px solid red;
   display: flex;
 }
 
 .board-square {
   width: 40px;
   height: 40px;
-  border: 2px solid brown;
+  border: 2px solid var(--board-cell-border);
 }
 
+.board-square:hover {
+  background-color: var(--cell-hover-clr);
+}
 .ship-square {
   width: 35px;
   height: 35px;
-  border: 3px solid pink;
+  border: 3px solid var(--ship-border-clr);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--secondary-text-clr);
+}
+
+.disable {
+  cursor: not-allowed;
 }
 
 .board-square,
@@ -108,6 +150,9 @@ main {
 .boards-container {
   display: flex;
   gap: 68px;
+  justify-content: center;
+
+  width: 100%;
 }
 
 .dot {
@@ -116,4 +161,50 @@ main {
 
   border-radius: 50%;
   display: inline-block;
+}
+
+.deploy-btn {
+  background-color: var(--deploy-btn-bg);
+  color: var(--btn-text-clr);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+.randomize-btn {
+  background-color: var(--randomize-btn-bg);
+  color: var(--btn-text-clr);
+}
+.deploy-btn:hover {
+  background-color: var(--deploy-btn-hover);
+}
+
+.randomize-btn:hover {
+  background-color: var(--randomize-btn-hover);
+}
+
+.randomize-btn,
+.deploy-btn {
+  padding: 8px 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.own-waters,
+.enemy-waters {
+  background-color: var(--card-bg-clr);
+  color: var(--main-text-clr);
+  width: 31%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.players-header {
+  width: 100%;
+  gap: 68px;
+  justify-content: center;
 }
