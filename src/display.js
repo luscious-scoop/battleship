@@ -148,7 +148,7 @@ export const display = () => {
   }
 
   function createDot(isHit) {
-    const color = isHit === true ? 'red' : 'black';
+    const color = isHit === true ? '#E05D5D' : '#6E8E94';
 
     let dot = createDiv();
 
