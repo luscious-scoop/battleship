@@ -119,6 +119,8 @@ export const display = () => {
     let initialButtons = document.querySelector('.initial-screen-btns');
     initialButtons.style.display = 'none';
 
+    renderPlayerHeaders(true);
+
     let board = boardsContainer.querySelector('.board:nth-child(2)');
     board.addEventListener('click', (e) => {
       playGame(e);
@@ -197,6 +199,15 @@ export const display = () => {
       boardSquare.textContent = '';
 
       boardSquare.appendChild(createDot(isHit));
+    }
+  }
+
+  function renderPlayerHeaders(doRender) {
+    let header = document.querySelector('.players-header');
+    if (doRender) {
+      header.style.display = 'flex';
+    } else {
+      header.style.display = 'none';
     }
   }
 };
