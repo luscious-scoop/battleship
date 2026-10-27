@@ -99,9 +99,13 @@ export const gameController = (playerOneName = 'user') => {
     let opponentBoard = opponent.getPlayerBoard();
 
     if (playerBoard.areShipsSunk()) {
-      return opponent.getPlayerName();
+      return `💥 FLEET CRUSHED 💥
+
+Your ships has been sunk. The enemy AI successfully calculated your positions and wiped out your fleet.`;
     } else if (opponentBoard.areShipsSunk()) {
-      return playerOne.getPlayerName();
+      return `⚓ ENEMY FLEET DESTROYED! ⚓
+
+Victory is ours, Admiral! You have  successfully located and sunk all enemy warships. The high seas are clear!`;
     }
 
     return false;
