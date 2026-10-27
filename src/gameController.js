@@ -6,17 +6,17 @@ export const gameController = (playerOneName = 'user') => {
   const ships = [
     {
       length: 5,
-      name: 'battleship',
-    },
-
-    {
-      length: 4,
       name: 'carrier',
     },
 
     {
+      length: 4,
+      name: 'battleship',
+    },
+
+    {
       length: 3,
-      name: 'bomber',
+      name: 'cruiser',
     },
 
     {
@@ -26,12 +26,7 @@ export const gameController = (playerOneName = 'user') => {
 
     {
       length: 2,
-      name: 'boat',
-    },
-
-    {
-      length: 2,
-      name: 'sonar',
+      name: 'destroyer',
     },
   ];
 
