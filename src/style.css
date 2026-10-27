@@ -90,6 +90,7 @@ h6 {
   --winner-text: #e5c158;
   --play-again-bg: #2d5a4c;
   --play-again-bg-hover: #65ab97;
+  --button-disabled: #172420;
 }
 
 body {
@@ -250,4 +251,8 @@ dialog button:hover {
 
 dialog::backdrop {
   background-color: rgba(18, 42, 35, 0.85);
+}
+button:disabled {
+  background-color: var(--button-disabled);
+  cursor: not-allowed;
 }
