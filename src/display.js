@@ -6,6 +6,9 @@ export const display = () => {
   const boardsContainer = document.querySelector('.boards-container');
   const randomizeBtn = document.querySelector('.randomize-btn');
   const deployBtn = document.querySelector('.deploy-btn');
+  const playAgainBtn = document.querySelector('dialog button');
+
+  playAgainBtn.addEventListener('click', playAgain);
 
   randomizeBtn.addEventListener('click', () => {
     placeShips();
@@ -146,7 +149,7 @@ export const display = () => {
 
     e.target.disabled = true;
 
-    if (result) alert(result);
+    endGameHandler(result);
   }
 
   function createDot(isHit) {
@@ -212,4 +215,33 @@ export const display = () => {
   }
 
   renderPlayerHeaders(false);
+
+  function endGameHandler(msg) {
+    if (!msg) return;
+    const dialog = document.querySelector('dialog');
+
+    const result = dialog.querySelector('p');
+    result.textContent = msg;
+
+    dialog.showModal();
+  }
+
+  function playAgain() {
+    game.clearPlayersBoard();
+
+    boardsContainer.textContent = '';
+
+    renderBoard(game.getPlayerOne());
+
+    const initialButtons = document.querySelector('.initial-screen-btns');
+
+    initialButtons.style.display = 'block';
+
+    renderPlayerHeaders(false);
+
+    const dialog = document.querySelector('dialog');
+    dialog.close();
+
+    deployBtn.disabled = true;
+  }
 };
