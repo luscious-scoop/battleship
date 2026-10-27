@@ -7,6 +7,7 @@ export const display = () => {
   const randomizeBtn = document.querySelector('.randomize-btn');
   const deployBtn = document.querySelector('.deploy-btn');
   const playAgainBtn = document.querySelector('dialog button');
+  const dialog = document.querySelector('dialog');
 
   playAgainBtn.addEventListener('click', playAgain);
 
@@ -218,7 +219,6 @@ export const display = () => {
 
   function endGameHandler(msg) {
     if (!msg) return;
-    const dialog = document.querySelector('dialog');
 
     const result = dialog.querySelector('p');
     result.textContent = msg;
@@ -239,7 +239,6 @@ export const display = () => {
 
     renderPlayerHeaders(false);
 
-    const dialog = document.querySelector('dialog');
     dialog.close();
 
     deployBtn.disabled = true;
