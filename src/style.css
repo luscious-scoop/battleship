@@ -84,6 +84,12 @@ h6 {
   --randomize-btn-hover: #334c46;
   --deploy-btn-hover: #438270;
   --card-bg-clr: #122a23;
+  --dialog-bg: #122a23;
+  --dialog-border: #438270;
+  --dialog-header: #e8f1ec;
+  --winner-text: #e5c158;
+  --play-again-bg: #2d5a4c;
+  --play-again-bg-hover: #65ab97;
 }
 
 body {
@@ -207,4 +213,41 @@ button {
   width: 100%;
   gap: 68px;
   justify-content: center;
+}
+
+dialog {
+  background-color: var(--dialog-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  border: 2px solid var(--dialog-border);
+}
+
+dialog p {
+  text-align: center;
+  color: var(--winner-text);
+  text-transform: capitalize;
+  gap: 10px;
+}
+
+dialog div {
+  display: flex;
+  justify-content: center;
+}
+
+dialog button {
+  background-color: var(--play-again-bg);
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  color: var(--btn-text-clr);
+}
+
+dialog button:hover {
+  background-color: var(--play-again-bg-hover);
+}
+
+dialog::backdrop {
+  background-color: rgba(18, 42, 35, 0.85);
 }
