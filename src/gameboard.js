@@ -4,7 +4,7 @@ export const Gameboard = () => {
   let board = [];
   const ships = new Map();
 
-  const attackedCoordinates = [];
+  let attackedCoordinates = [];
 
   let occupiedCoordinates = [];
 
@@ -97,6 +97,7 @@ export const Gameboard = () => {
   function clearBoard() {
     board = [];
     occupiedCoordinates = [];
+    attackedCoordinates = [];
     createBoard();
   }
 
