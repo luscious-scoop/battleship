@@ -104,8 +104,14 @@ export const Gameboard = () => {
   const getBoard = () => board;
   const getShips = () => ships;
   const getOccupiedCoordinates = () => occupiedCoordinates;
-  const isAllShipsPlaced = () =>
-    occupiedCoordinates.length === 19 ? true : false;
+  function isAllShipsPlaced(ships) {
+    let length = ships.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.length,
+      0
+    );
+
+    return occupiedCoordinates.length === length ? true : false;
+  }
 
   const getAttackedCoordinates = () => attackedCoordinates;
 

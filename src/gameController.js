@@ -111,9 +111,13 @@ Victory is ours, Admiral! You have  successfully located and sunk all enemy wars
     opponent.getPlayerBoard().clearBoard();
   }
 
-  function areBothPlayersShipsPlaced() {
-    let isPlayerOneShipsPlaces = playerOne.getPlayerBoard().isAllShipsPlaced();
-    let isOpponentShipsPlaced = opponent.getPlayerBoard().isAllShipsPlaced();
+  function areBothPlayersShipsPlaced(ships) {
+    let isPlayerOneShipsPlaces = playerOne
+      .getPlayerBoard()
+      .isAllShipsPlaced(ships);
+    let isOpponentShipsPlaced = opponent
+      .getPlayerBoard()
+      .isAllShipsPlaced(ships);
     if (isPlayerOneShipsPlaces && isOpponentShipsPlaced) {
       return true;
     }
