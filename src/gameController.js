@@ -109,9 +109,10 @@ Victory is ours, Admiral! You have  successfully located and sunk all enemy wars
   function clearPlayersBoard() {
     playerOne.getPlayerBoard().clearBoard();
     opponent.getPlayerBoard().clearBoard();
+    opponent.clearComputerMadeMoves();
   }
 
-  function areBothPlayersShipsPlaced(ships) {
+  function areBothPlayersShipsPlaced() {
     let isPlayerOneShipsPlaces = playerOne
       .getPlayerBoard()
       .isAllShipsPlaced(ships);

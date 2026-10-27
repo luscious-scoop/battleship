@@ -35,9 +35,14 @@ const Computer = () => {
     return false;
   }
 
+  function clearComputerMadeMoves() {
+    previousComputerCoordinates = [];
+  }
+
   return Object.freeze({
     ...Player('computer', 'AI'),
     makeComputerMove,
+    clearComputerMadeMoves,
   });
 };
 
